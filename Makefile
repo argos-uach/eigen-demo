@@ -1,2 +1,2 @@
 all:
-	g++ -o demo demo.c -I ${CONDA_PREFIX}/include/eigen3
+	g++ -o demo demo.cpp -I ${CONDA_PREFIX}/include/eigen3
