@@ -4,7 +4,7 @@
 		{
 			"type": "cppbuild",
 			"label": "conda build",
-			"command": "/home/phuijse/.conda/envs/c-eigen/bin/g++",
+			"command": "~/.conda/envs/c-eigen/bin/g++",
 			"args": [
 				"-fdiagnostics-color=always",
 				"-I/home/phuijse/.conda/envs/c-eigen/include/eigen3",
