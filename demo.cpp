@@ -1,22 +1,32 @@
 #include <iostream>
 #include <Eigen/Dense>
- 
+#include <pybind11/pybind11.h>
+#include <pybind11/eigen.h>
+
 using namespace Eigen;
- 
-int main()
+namespace py = pybind11;
+
+Eigen::MatrixXf sumMatrix()
 {
-     Matrix2d a;
+
+     Matrix2f a;
      a << 1, 2,
           3, 4;
-     MatrixXd b(2,2);
+     MatrixXf b(2,2);
      b << 2, 3,
           1, 4;
-     std::cout << "a + b =\n" << a + b << std::endl;
-     std::cout << "a - b =\n" << a - b << std::endl;
-     std::cout << "Doing a += b;" << std::endl;
-     a += b;
-     std::cout << "Now a =\n" << a << std::endl;
-     Vector3d v(1,2,3);
-     Vector3d w(1,0,0);
-     std::cout << "-v + w - v =\n" << -v + w - v << std::endl;
+     MatrixXf c;
+     c = a + b;
+     
+     std::cout << "a + b =\n" << c << std::endl;
+
+     return c;
+}
+
+
+PYBIND11_MODULE(demo, m) {
+     m.doc() = "pybind11 example plugin"; // optional module docstring
+     m.def("sumMatrix", &sumMatrix, "Probando Eigen");
+     //m.attr("vector") = 69;
+
 }
