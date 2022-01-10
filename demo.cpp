@@ -6,19 +6,11 @@
 using namespace Eigen;
 namespace py = pybind11;
 
-Eigen::MatrixXf sumMatrix()
+Eigen::MatrixXf sumMatrix(MatrixXf matriz)
 {
-
-     Matrix2f a;
-     a << 1, 2,
-          3, 4;
-     MatrixXf b(2,2);
-     b << 2, 3,
-          1, 4;
      MatrixXf c;
-     c = a + b;
-     
-     std::cout << "a + b =\n" << c << std::endl;
+     c = 2*matriz;
+     std::cout << "2*matriz =\n" << c << std::endl;
 
      return c;
 }
@@ -26,7 +18,8 @@ Eigen::MatrixXf sumMatrix()
 
 PYBIND11_MODULE(demo, m) {
      m.doc() = "pybind11 example plugin"; // optional module docstring
-     m.def("sumMatrix", &sumMatrix, "Probando Eigen");
+     m.def("sumMatrix", &sumMatrix, "Funcion con un argumento",
+          py::arg("m"));
      //m.attr("vector") = 69;
 
 }

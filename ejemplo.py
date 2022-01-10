@@ -1,6 +1,6 @@
 import demo
-x = demo.sumMatrix()
-print(type(x))
-print(x.dtype)
-print(x)
+import numpy as np
+A=[[1., 2.],[3.,4.]]
+L=np.array(A, dtype=np.float32)
+x = demo.sumMatrix(m=L)
 

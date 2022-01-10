@@ -14,21 +14,18 @@ Compilar el demo
 
 y ejecutar
 
-    ./demo
+    python ejemplo.py
 
 El resultado debería ser 
 
-    a + b =
-    3 5
-    4 8
-    a - b =
-    -1 -1
-    2  0
-    Doing a += b;
-    Now a =
-    3 5
-    4 8
-    -v + w - v =
-    -1
-    -4
-    -6
+    2*matriz =
+    2 4
+    6 8
+
+Desde ejemplo.py entregamos un numpy ndarray a la funcion sumMatrix de demo.cpp como argumento, que retorna una matriz eigen::MatrixXf (es la multiplicación de la matriz entregada como argumento pr 2)
+
+Luego hacemos un test unitario test_demo.py para verificar que la multiplicación sea correcta en python, para probar el testing debemos instalar:
+
+    conda install pip pytest -c conda-forge
+
+Notar que debe instalarse en el ambiente c-eigen

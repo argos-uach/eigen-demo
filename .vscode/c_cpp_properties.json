@@ -4,10 +4,10 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "~/.conda/envs/c-eigen/include/**"
+                "${env:CONDA_PREFIX}/include/**"
             ],
             "defines": [],
-            "compilerPath": "~/.conda/envs/c-eigen/bin/g++",
+            "compilerPath": "${env:CONDA_PREFIX}/bin/g++",
             "cStandard": "c17",
             "cppStandard": "c++14",
             "intelliSenseMode": "linux-clang-x64"
