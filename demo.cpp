@@ -6,7 +6,7 @@
 using namespace Eigen;
 namespace py = pybind11;
 
-Eigen::MatrixXf sumMatrix(MatrixXf matriz)
+Eigen::MatrixXf multMatrix(MatrixXf matriz)
 {
      MatrixXf c;
      c = 2*matriz;
@@ -15,11 +15,17 @@ Eigen::MatrixXf sumMatrix(MatrixXf matriz)
      return c;
 }
 
+void multMatrix_Ref(Eigen::Ref<MatrixXf> matriz)
+{
+     matriz = 2*matriz;
+     std::cout << "2*matriz =\n" << matriz << std::endl;
+}
 
 PYBIND11_MODULE(demo, m) {
      m.doc() = "pybind11 example plugin"; // optional module docstring
-     m.def("sumMatrix", &sumMatrix, "Funcion con un argumento",
+     m.def("multMatrix", &multMatrix, "Funcion con un argumento",
           py::arg("m"));
-     //m.attr("vector") = 69;
+     m.def("multMatrixRef", &multMatrix_Ref, "Funcion con un argumento pasado por referencia",
+          py::arg("m"));
 
 }
