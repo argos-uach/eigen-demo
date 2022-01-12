@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 def test_multiplyby2_ref():
-    df= pd.read_csv("out.csv")
+    df= pd.read_csv("out1.csv")
     L = np.array(df.values, dtype=np.float32, order="F")
     H = np.array(df.values, dtype=np.float32, order="F")
 

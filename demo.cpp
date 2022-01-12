@@ -29,6 +29,14 @@ void multRowMatrix_Ref(Eigen::Ref<RowMatrixXf> matriz)
      std::cout << "2*matriz =\n" << matriz << std::endl;
 }
 
+Eigen::MatrixXf multMatrixByMatrix_Ref(Eigen::Ref<MatrixXf> matriz1, Eigen::Ref<MatrixXf> matriz2)
+{
+
+     MatrixXf mult = matriz1 * matriz2.transpose();
+     std::cout << "matriz1*matriz2 =\n" << mult << std::endl;
+     return mult;
+}
+
 PYBIND11_MODULE(demo, m) {
      m.doc() = "pybind11 example plugin"; // optional module docstring
      m.def("multMatrix", &multMatrix, "Funcion con un argumento",
@@ -37,4 +45,6 @@ PYBIND11_MODULE(demo, m) {
           py::arg("m"));
      m.def("multRowMatrixRef", &multRowMatrix_Ref, "Funcion con un argumento pasado por referencia con rowMajor",
           py::arg("m"));
+     m.def("multMatrixByMatrix_Ref", &multMatrixByMatrix_Ref, "Funcion con 2 argumento pasado por referencia",
+          py::arg("matriz1"), py::arg("matriz2"));
 }
