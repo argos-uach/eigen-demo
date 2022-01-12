@@ -1,10 +1,11 @@
 import demo 
 import numpy as np
+import pandas as pd
 
 def test_multiplyby2_ref():
-    A=[[1., 2.],[3.,4.]]
-    L = np.array(A, dtype=np.float32, order="F")
-    H = np.array(A, dtype=np.float32, order="F")
+    df= pd.read_csv("out.csv")
+    L = np.array(df.values, dtype=np.float32, order="F")
+    H = np.array(df.values, dtype=np.float32, order="F")
 
     demo.multMatrixRef(m=L)
 
