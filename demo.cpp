@@ -33,7 +33,7 @@ Eigen::MatrixXf multMatrixByMatrix_Ref(Eigen::Ref<MatrixXf> matriz1, Eigen::Ref<
 {
 
      MatrixXf mult = matriz1 * matriz2.transpose();
-     std::cout << "matriz1*matriz2 =\n" << mult << std::endl;
+     //std::cout << "matriz1*matriz2 =\n" << mult << std::endl;
      return mult;
 }
 
