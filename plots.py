@@ -12,15 +12,21 @@ with open("profiling_np_dot", "rb") as f:
     result_numpy = pickle.load(f)
 # %%
 
-x = list(result_numpy.keys())
-y = list(result_numpy.values())
+def unpack_results(results):
+    x = list(results.keys())
+    y = [timeit.average for timeit in results.values()]
+    yerr = [timeit.stdev for timeit in results.values()]
+    return x, y, yerr
+    
+x, y, yerr = unpack_results(result_numpy)
 fig, ax = plt.subplots(figsize=(5, 4), facecolor='w')
-ax.plot(x, y, label='Numpy')
+ax.errorbar(x, y, yerr, label='Numpy')
 # ax.scatter(x, y)
-y = list(result_eigen.values())
-ax.plot(x, y, label='Eigen')
+x, y, yerr = unpack_results(result_eigen)
+ax.errorbar(x, y, yerr, label='Eigen')
 ax.set_xlabel('Tamaño de la matriz')
 ax.set_ylabel('Tiempo promedio')
 ax.legend()
+ax.set_title('Openblas Pablo H')
 
 # %%
