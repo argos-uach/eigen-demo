@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 import numpy 
 import pickle
 
-with open("profiling_eigen", "rb") as f:
+with open("profiling_eigen.pkl", "rb") as f:
     result_eigen = pickle.load(f)
 
-with open("profiling_np_dot", "rb") as f:
+with open("profiling_np_dot.pkl", "rb") as f:
     result_numpy = pickle.load(f)
 # %%
 
@@ -28,5 +28,7 @@ ax.set_xlabel('Tamaño de la matriz')
 ax.set_ylabel('Tiempo promedio')
 ax.legend()
 ax.set_title('Openblas Pablo H')
+ax.set_xscale('log')
+ax.set_yscale('log')
 
 # %%
