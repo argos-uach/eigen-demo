@@ -29,3 +29,13 @@ Luego hacemos un test unitario test_demo.py para verificar que la multiplicació
     conda install pip pytest -c conda-forge
 
 Notar que debe instalarse en el ambiente c-eigen
+
+## Utilizando openblas en eigen
+
+Crear un ambiente con:
+
+    conda create -n eigen-openblas -c conda-forge pybind11 eigen openblas numpy cxx-compiler make jupyter matplotlib
+
+Compilar con
+
+    make openblas
