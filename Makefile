@@ -10,7 +10,7 @@ ifeq ($(openblas),1)
 	CXXFLAGS+=-DEIGEN_USE_LAPACKE -DEIGEN_USE_BLAS  
 endif
 
-# Call as make mkl=1 to compile against openblas
+# Call as make mkl=1 to compile against MKL
 ifeq ($(mkl),1)
 	LDFLAGS+=-lmkl_rt -Wl,--no-as-needed -lpthread -ldl
 	CXXFLAGS+=-DEIGEN_USE_MKL_ALL -m64 -DMKL_LP64
