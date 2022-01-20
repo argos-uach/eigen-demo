@@ -34,8 +34,18 @@ Notar que debe instalarse en el ambiente c-eigen
 
 Crear un ambiente con:
 
-    conda create -n eigen-openblas -c conda-forge pybind11 eigen openblas numpy cxx-compiler make jupyter matplotlib
+    conda create -n eigen-openblas -c conda-forge pybind11 eigen openblas numpy cxx-compiler make matplotlib ipython ipykernel
+
+Para instalar MKL:
+
+    conda install -c intel mkl-include mkl
 
 Compilar con
 
-    make openblas
+    make openblas=1
+
+o
+
+    make mkl=1
+
+Para linkear contra dichas librerías
