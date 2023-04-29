@@ -28,6 +28,7 @@ with open("profiling_eigen.pkl", "wb") as c:
 %matplotlib inline 
 import matplotlib.pyplot as plt
 import pickle
+import numpy as np
 
 with open("profiling_eigen.pkl", "rb") as f:
     result_eigen = pickle.load(f)
@@ -36,9 +37,9 @@ with open("profiling_np_dot.pkl", "rb") as f:
     result_numpy = pickle.load(f)
 
 def unpack_results(results):
-    x = list(results.keys())
-    y = [timeit.average for timeit in results.values()]
-    yerr = [timeit.stdev for timeit in results.values()]
+    x = np.array(list(results.keys()))
+    y = np.array([timeit.average for timeit in results.values()])
+    yerr = np.array([timeit.stdev for timeit in results.values()])
     return x, y, yerr
     
 x, y, yerr = unpack_results(result_numpy)
@@ -50,7 +51,7 @@ ax.errorbar(x, y, yerr, label='Eigen')
 ax.set_xlabel('Tamaño de la matriz')
 ax.set_ylabel('Tiempo promedio')
 ax.legend()
-ax.set_title('Sin linkear Openblas Pablo H')
+ax.set_title('MKL Pablo H')
 ax.set_xscale('log')
 ax.set_yscale('log')
 # %%
@@ -59,7 +60,7 @@ ax.set_yscale('log')
 fig, ax = plt.subplots(figsize=(5, 4), facecolor='w')
 x, y1, yerr1 = unpack_results(result_eigen)
 x, y2, yerr2 = unpack_results(result_numpy)
-ax.errorbar(x, np.array(y2)/np.array(y1))
+ax.errorbar(x, y2/y1)
 ax.set_xlabel('Tamaño de la matriz')
 ax.set_xscale('log')
 ax.set_ylabel('Speed up')
